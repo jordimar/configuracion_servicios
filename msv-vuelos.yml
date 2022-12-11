@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    url: jdbc:mysql://localhost/db_viajes?serverTimezone=Europe/Madrid
+    password: sasa   
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+server:
+  port: '9000'
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
