@@ -1,0 +1,35 @@
+server:
+  port: 7000
+Spring:        
+  cloud:
+    gateway:
+      routes:
+      - id: serv-vuelos
+         #lb://cuando se va a acceder a través de Eureka
+        uri: lb://msv-vuelos  #http://localhost:8080
+        predicates:
+          - Path=/svuelos/**
+        filters:
+          - RewritePath=/svuelos/*, /
+          
+      - id: serv-hoteles
+         #lb://cuando se va a acceder a través de Eureka
+        uri: lb://msv-hoteles  #http://localhost:8080
+        predicates:
+          - Path=/shoteles/**
+        filters:
+          - RewritePath=/shoteles/*, /
+          
+      - id: serv-reservas
+         #lb://cuando se va a acceder a través de Eureka
+        uri: lb://msv-reservas  #http://localhost:8080
+        predicates:
+          - Path=/sreservas/**
+        filters:
+          - RewritePath=/sreservas/*, /
+          
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+      
